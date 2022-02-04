@@ -9,8 +9,7 @@
   },
   "dependencies": {
     "@chakra-ui/react": "^1.8.1",
-    "@clerk/clerk-react": "file:.yalc/@clerk/clerk-react",
-    "@clerk/nextjs": "^3.0.0-alpha.4",
+    "@clerk/nextjs": "^3.0.0-alpha.5",
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
     "framer-motion": "^5.6.0",
