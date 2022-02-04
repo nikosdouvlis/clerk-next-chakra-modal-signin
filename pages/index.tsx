@@ -16,11 +16,11 @@ import {
   useDisclosure,
   useToast,
 } from "@chakra-ui/react";
-import { ClerkLoaded, useClerk, UserButton, useSignIn, useUser } from "@clerk/nextjs";
+import { ClerkLoaded, useClerk, UserButton, useSignIn, useUser, SignUpButton } from "@clerk/nextjs";
 
 const Home: NextPage = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { isSignedIn } = useUser();
+  const { isLoaded, isSignedIn } = useUser();
 
   React.useEffect(() => {
     return () => console.log(">> unmount");
@@ -31,12 +31,20 @@ const Home: NextPage = () => {
       <Button colorScheme="blue" onClick={onOpen}>
         Open sign in modal
       </Button>
-      {isSignedIn && (
+      {isLoaded && isSignedIn && (
         <Center m={10}>
           <Heading as="h4" mr={4}>
             User:
           </Heading>
           <UserButton afterSignOutAllUrl="/" />
+        </Center>
+      )}
+      {isLoaded && !isSignedIn && (
+        <Center m={10}>
+          You need an account before trying the sign in modal:{" "}
+          <SignUpButton>
+            <Button colorScheme="gray">Sign up</Button>
+          </SignUpButton>
         </Center>
       )}
       <ClerkLoaded>
